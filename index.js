@@ -1,4 +1,1 @@
-for (let i = 0, string = "#"; i < 7; i++) {
-  console.log(string);
-  string += "#";
-}
+for (let line = "#"; line.length <= 7; line += "#") console.log(line);
