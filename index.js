@@ -1,13 +1,7 @@
-let size = 8;
-let board = "";
-for (let i = 1; i <= size; i++) {
-  for (let j = 1; j <= size; j++) {
-    if ((i + j) % 2 == 0) {
-      board += " ";
-    } else {
-      board += "#";
-    }
-  }
-  board += "\n";
+function roundTo(n, step = 1) {
+  let remainder = n % step;
+  return n - remainder + (remainder < step / 2 ? 0 : step);
 }
-console.log(board);
+
+console.log(roundTo(4.5));
+console.log(roundTo(4.5, 2));
