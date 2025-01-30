@@ -1,7 +1,8 @@
-function roundTo(n, step = 1) {
-  let remainder = n % step;
-  return n - remainder + (remainder < step / 2 ? 0 : step);
+function power(base, exponant) {
+  if (exponant == 0) {
+    return 1;
+  }
+  return base * power(base, exponant - 1);
 }
 
-console.log(roundTo(4.5));
-console.log(roundTo(4.5, 2));
+console.log(power(4, 4));
