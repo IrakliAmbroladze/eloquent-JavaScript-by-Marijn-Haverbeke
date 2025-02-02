@@ -1,8 +1,25 @@
-function power(base, exponant) {
-  if (exponant == 0) {
-    return 1;
+// Your code here.
+const countBs = (word) => {
+  let count = 0;
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] === "B") {
+      count++;
+    }
   }
-  return base * power(base, exponant - 1);
-}
+  return count;
+};
 
-console.log(power(4, 4));
+const countChar = (word, char) => {
+  let count = 0;
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] === char) {
+      count++;
+    }
+  }
+  return count;
+};
+
+console.log(countBs("BOB"));
+// → 2
+console.log(countChar("kakkerlakkkkk", "k"));
+// → 4
