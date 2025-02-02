@@ -1,25 +1,18 @@
-// Your code here.
-const countBs = (word) => {
-  let count = 0;
-  for (let i = 0; i < word.length; i++) {
-    if (word[i] === "B") {
-      count++;
+function countChar(string, ch) {
+  let counted = 0;
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] == ch) {
+      counted += 1;
     }
   }
-  return count;
-};
+  return counted;
+}
 
-const countChar = (word, char) => {
-  let count = 0;
-  for (let i = 0; i < word.length; i++) {
-    if (word[i] === char) {
-      count++;
-    }
-  }
-  return count;
-};
+function countBs(string) {
+  return countChar(string, "B");
+}
 
-console.log(countBs("BOB"));
+console.log(countBs("BBC"));
 // → 2
-console.log(countChar("kakkerlakkkkk", "k"));
+console.log(countChar("kakkerlak", "k"));
 // → 4
