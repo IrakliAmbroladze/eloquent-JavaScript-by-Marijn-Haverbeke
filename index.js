@@ -1,6 +1,13 @@
-let sequence = [1, 2, 3];
-sequence.push(4);
-sequence.push(5);
-// console.log(sequence);
-sequence.pop();
-console.log(sequence);
+(function printFarmInventory(cows, chickens) {
+  let cowString = String(cows);
+  while (cowString.length < 3) {
+    cowString = "0" + cowString;
+  }
+  console.log(`${cowString} cows`);
+
+  let chickenString = String(chickens);
+  while (chickenString.length < 3) {
+    chickenString = "0" + chickenString;
+  }
+  console.log(`${chickenString} chickens`);
+})(7, 11);
