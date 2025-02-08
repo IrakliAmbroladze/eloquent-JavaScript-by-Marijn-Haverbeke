@@ -1,15 +1,13 @@
-function printZeroPaddedWithLabel(number, label) {
-  let numberToString = String(number);
-  while (numberToString.length < 3) {
-    numberToString = "0" + numberToString;
-  }
-  console.log(`${numberToString} ${label}`);
+function phi(table) {
+  return (
+    (table[3] * table[0] - table[2] * table[1]) /
+    Math.sqrt(
+      (table[2] + table[3]) *
+        (table[0] + table[1]) *
+        (table[1] + table[3]) *
+        (table[0] + table[2])
+    )
+  );
 }
 
-function printFarmInventory(cows, chickens, pigs) {
-  printZeroPaddedWithLabel(cows, "cows");
-  printZeroPaddedWithLabel(chickens, "chickens");
-  printZeroPaddedWithLabel(pigs, "pigs");
-}
-
-printFarmInventory(7, 11, 3);
+console.log(phi([76, 9, 4, 1])); // → 0.068599434
