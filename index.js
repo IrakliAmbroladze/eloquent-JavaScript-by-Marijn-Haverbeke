@@ -1,6 +1,15 @@
 import "./journal.js";
-import JOURNAL from "./journal.js";
 
-for (let entry of JOURNAL) {
-  console.log(`${entry.events.length} events`);
+function journalEntires(journal) {
+  let events = [];
+  for (let entry of journal) {
+    for (let event of entry.events) {
+      if (!events.includes(event)) {
+        events.push(event);
+      }
+    }
+  }
+  return events;
 }
+
+console.log(journalEntires(JOURNAL));
