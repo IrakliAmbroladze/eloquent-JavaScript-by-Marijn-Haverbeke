@@ -1,4 +1,29 @@
 import "./journal.js";
+import JOURNAL from "./journal.js";
+
+function phi(table) {
+  return (
+    (table[3] * table[0] - table[2] * table[1]) /
+    Math.sqrt(
+      (table[2] + table[3]) *
+        (table[0] + table[1]) *
+        (table[1] + table[3]) *
+        (table[0] + table[2])
+    )
+  );
+}
+
+function tableFor(event, journal) {
+  let table = [0, 0, 0, 0];
+  for (let i = 0; i < journal.length; i++) {
+    let entry = journal[i],
+      index = 0;
+    if (entry.events.includes(event)) index += 1;
+    if (entry.squirrel) index += 2;
+    table[index] += 1;
+  }
+  return table;
+}
 
 function journalEntires(journal) {
   let events = [];
@@ -12,4 +37,9 @@ function journalEntires(journal) {
   return events;
 }
 
-console.log(journalEntires(JOURNAL));
+for (let event of journalEntires(JOURNAL)) {
+  let correlation = phi(tableFor(event, JOURNAL));
+  if (correlation > 0.1 || correlation < -0.1) {
+    console.log(event + ":", correlation);
+  }
+}
