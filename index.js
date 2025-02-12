@@ -1,4 +1,8 @@
 let myArray = [0, 1, 2, 3, 4];
-let newArray = myArray.slice(2);
-console.log("myArray", myArray);
-console.log("newArray", newArray);
+
+function remove(array, index) {
+  return array.slice(0, index).concat(array.slice(index + 1));
+}
+
+console.log("myArray: ", myArray);
+console.log("newArray: ", remove(myArray, 2));
