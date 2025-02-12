@@ -1,62 +1,20 @@
-import "./journal.js";
-import JOURNAL from "./journal.js";
+let todoList = ["first note", "second note"];
 
-function phi(table) {
-  return (
-    (table[3] * table[0] - table[2] * table[1]) /
-    Math.sqrt(
-      (table[2] + table[3]) *
-        (table[0] + table[1]) *
-        (table[1] + table[3]) *
-        (table[0] + table[2])
-    )
-  );
+function remember(task) {
+  todoList.push(task);
 }
 
-function tableFor(event, journal) {
-  let table = [0, 0, 0, 0];
-  for (let i = 0; i < journal.length; i++) {
-    let entry = journal[i],
-      index = 0;
-    if (entry.events.includes(event)) index += 1;
-    if (entry.squirrel) index += 2;
-    table[index] += 1;
-  }
-  return table;
+remember("new note");
+
+function getTask() {
+  return todoList.shift();
 }
 
-function journalEntires(journal) {
-  let events = [];
-  for (let entry of journal) {
-    for (let event of entry.events) {
-      if (!events.includes(event)) {
-        events.push(event);
-      }
-    }
-  }
-  return events;
+function rememberOrgently(task) {
+  todoList.unshift(task);
 }
 
-// for (let event of journalEntires(JOURNAL)) {
-//   let correlation = phi(tableFor(event, JOURNAL));
-//   if (correlation > 0.1 || correlation < -0.1) {
-//     console.log(event + ":", correlation);
-//   }
-// }
-
-// for (let event of journalEntires(JOURNAL)) {
-//   let correlation = phi(tableFor(event, JOURNAL));
-//   if (correlation > 0.1 || correlation < -0.1) {
-//     console.log(event + ":", correlation);
-//   }
-// }
-
-for (let entry of JOURNAL) {
-  if (
-    entry.events.includes("peanuts") &&
-    !entry.events.includes("brushed teeth")
-  ) {
-    entry.events.push("peanut teeth");
-  }
-}
-console.log(phi(tableFor("peanut teeth", JOURNAL)));
+rememberOrgently("orgent");
+console.log(todoList);
+console.log(getTask());
+console.log(todoList);
