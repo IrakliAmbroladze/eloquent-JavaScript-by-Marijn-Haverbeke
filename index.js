@@ -1,20 +1,4 @@
-let todoList = ["first note", "second note"];
-
-function remember(task) {
-  todoList.push(task);
-}
-
-remember("new note");
-
-function getTask() {
-  return todoList.shift();
-}
-
-function rememberOrgently(task) {
-  todoList.unshift(task);
-}
-
-rememberOrgently("orgent");
-console.log(todoList);
-console.log(getTask());
-console.log(todoList);
+let myArray = [0, 1, 2, 3, 4];
+let newArray = myArray.slice(2);
+console.log("myArray", myArray);
+console.log("newArray", newArray);
