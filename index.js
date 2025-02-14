@@ -1,22 +1,19 @@
-const reverseArray = (array) => {
-  let reversedArray = [];
-  let copyArray = array.slice();
-  const arrayLength = array.length;
-  for (let i = 0; i < arrayLength; i++) {
-    reversedArray.push(copyArray.pop());
+function reverseArray(array) {
+  let output = [];
+  for (let i = array.length - 1; i >= 0; i--) {
+    output.push(array[i]);
   }
+  return output;
+}
 
-  return reversedArray;
-};
-const reverseArrayInPlace = (array) => {
-  let reversedArray = [];
-  const arrayLength = array.length;
-  for (let i = 0; i < arrayLength; i++) {
-    reversedArray.push(array.pop());
+function reverseArrayInPlace(array) {
+  for (let i = 0; i < Math.floor(array.length / 2); i++) {
+    let old = array[i];
+    array[i] = array[array.length - 1 - i];
+    array[array.length - 1 - i] = old;
   }
-  array.push(...reversedArray);
   return array;
-};
+}
 
 let myArray = ["A", "B", "C"];
 console.log(reverseArray(myArray));
