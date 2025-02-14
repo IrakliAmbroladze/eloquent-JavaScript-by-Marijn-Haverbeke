@@ -1,31 +1,25 @@
-function range(start, end, step = 1) {
-  let allNumberArray = [];
+function range(start, end, step = start < end ? 1 : -1) {
+  let array = [];
+
   if (step > 0) {
-    while (start <= end) {
-      allNumberArray.push(start);
-      start += step;
-    }
-  } else if (step < 0) {
-    while (start >= end) {
-      allNumberArray.push(start);
-      start += step;
-    }
+    for (let i = start; i <= end; i += step) array.push(i);
   } else {
-    console.log("step is zero, that is not allowed!");
+    for (let i = start; i >= end; i += step) array.push(i);
   }
-  return allNumberArray;
+  return array;
 }
 
-function sum(range) {
+function sum(array) {
   let total = 0;
-  for (let number of range) {
-    total += number;
+  for (let value of array) {
+    total += value;
   }
   return total;
 }
 
-console.log("range: ", range(1, 10, 2));
-console.log("sum: ", sum(range(1, 10)));
-console.log("negative range: ", range(5, 2, -1));
-console.log("sum: ", sum(range(5, 2, -1)));
-console.log("negative range: ", range(5, 2, 0));
+console.log(range(1, 10));
+// → [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+console.log(range(5, 2, -1));
+// → [5, 4, 3, 2]
+console.log(sum(range(1, 10)));
+// → 55
