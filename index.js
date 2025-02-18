@@ -1,9 +1,7 @@
-//change other function
-function noisy(f) {
-  return (...args) => {
-    console.log("calling with", args);
-    let result = f(...args);
-    console.log("called with", args, ", returned", result);
-    return result;
-  };
+function arrayToList(array) {
+  let list;
+  console.log("hello");
+  return list;
 }
+
+arrayToList([1, 2, 3]);
