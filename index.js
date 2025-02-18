@@ -1,9 +1,12 @@
-//change other function
-function noisy(f) {
-  return (...args) => {
-    console.log("calling with", args);
-    let result = f(...args);
-    console.log("called with", args, ", returned", result);
-    return result;
-  };
+const createListObject = (value, rest) => ({ value, rest });
+
+function arrayToList(array) {
+  let list = null;
+  for (let i = array.length; i > 0; i--) {
+    list = createListObject(i, list);
+  }
+
+  return list;
 }
+
+console.log("result of arrayToList: ", arrayToList([1, 2, 3]));
