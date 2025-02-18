@@ -1,12 +1,7 @@
-//doing something N times
+//grater than function
 
-function repeat(n, action) {
-  for (let i = 0; i < n; i++) {
-    action(i);
-  }
+function greaterThan(n) {
+  return (m) => m > n;
 }
-
-let labels = [];
-repeat(5, (i) => labels.push(`Unit ${i + 1}`));
-
-console.log(labels);
+let greaterThan10 = greaterThan(10);
+console.log(greaterThan10(11));
