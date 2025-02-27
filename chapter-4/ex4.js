@@ -1,31 +1,19 @@
-const deepEqual = (obj1, obj2) => {
-  //check if any argument is null
-  if (obj1 == null || obj2 == null) {
+const deepEqual = (a, b) => {
+  if (a === b) return true;
+
+  if (a == null || typeof a != "object" || b == null || typeof b != "object")
     return false;
+
+  let keysA = Object.keys(a),
+    keysB = Object.keys(b);
+
+  if (keysA.length != keysB.length) return false;
+
+  for (let key of keysA) {
+    if (!keysB.includes(key) || !deepEqual(a[key], b[key])) return false;
   }
 
-  //if both of the arguments are objects do the following
-  if (typeof obj1 == "object" && typeof obj2 == "object") {
-    let fObjKeys = Object.keys(obj1);
-    let sObjKeys = Object.keys(obj2);
-    if (fObjKeys.length !== sObjKeys.length) {
-      return false;
-    }
-    for (let key of fObjKeys) {
-      if (obj2[key] === undefined) {
-        console.log("first false", sObjKeys[key], key, sObjKeys);
-        return false;
-      } else if (obj1[key] !== obj2[key]) {
-        if (typeof obj1[key] == "object") {
-          return deepEqual(obj1[key], obj2[key]);
-        }
-        return false;
-      }
-    }
-    return true;
-  }
-  //if arguments are not null and one of them is not an object then check equality directly
-  return obj1 == obj2;
+  return true;
 };
 
 let obj = { here: { is: "an" }, object: 2 };
