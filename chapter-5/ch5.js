@@ -1,17 +1,6 @@
-function repeat(n, action) {
-  for (let i = 0; i < n; i++) {
-    action(i);
-  }
-}
+let scripts = require("./05_higher_order/code/scripts");
 
-function unless(test, then) {
-  if (!test) then();
-}
-
-repeat(3, (n) => {
-  unless(n % 2 == 1, () => {
-    console.log(n, "is even");
-  });
-});
-
-["A", "B"].forEach((l) => console.log(l));
+let georgian = scripts.filter((script) => script.name == "Georgian");
+console.log(georgian);
+georgian.map((script) => console.log(script.name));
+georgian.map((script) => console.log(script.ranges));
