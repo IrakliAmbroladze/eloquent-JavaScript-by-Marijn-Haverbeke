@@ -1,6 +1,13 @@
-let scripts = require("./05_higher_order/code/scripts");
+require("./05_higher_order/code/scripts");
 
-let georgian = scripts.filter((script) => script.name == "Georgian");
-console.log(georgian);
-georgian.map((script) => console.log(script.name));
-georgian.map((script) => console.log(script.ranges));
+const characterCount = (script) => {
+  return script.ranges.reduce((count, [from, to]) => {
+    return count + (to - from);
+  }, 0);
+};
+
+console.log(
+  SCRIPTS.reduce((a, b) => {
+    return characterCount(a) < characterCount(b) ? b : a;
+  })
+);
