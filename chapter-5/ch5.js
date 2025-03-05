@@ -1,12 +1,16 @@
 const SCRIPTS = require("./05_higher_order/code/scripts");
 
-let total = 0,
-  count = 0;
-for (let script of SCRIPTS) {
-  if (script.living) {
-    total += script.year;
-    count += 1;
+const characterScript = (code) => {
+  for (let script of SCRIPTS) {
+    if (
+      script.ranges.some(([from, to]) => {
+        return code >= from && code < to;
+      })
+    ) {
+      return script;
+    }
   }
-}
+  return null;
+};
 
-console.log(Math.round(total / count));
+console.log(characterScript(121));
