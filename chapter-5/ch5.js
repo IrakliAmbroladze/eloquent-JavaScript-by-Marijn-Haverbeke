@@ -1,19 +1,13 @@
 const SCRIPTS = require("./05_higher_order/code/scripts");
 
-require("./05_higher_order/code/scripts");
-
-const characterCount = (script) => {
-  return script.ranges.reduce((count, [from, to]) => {
-    return count + (to - from);
-  }, 0);
+const average = (array) => {
+  return array.reduce((a, b) => a + b) / array.length;
 };
 
-let biggest = null;
+console.log(
+  Math.round(average(SCRIPTS.filter((s) => s.living).map((s) => s.year)))
+);
 
-for (let script of SCRIPTS) {
-  if (biggest == null || characterCount(biggest) < characterCount(script)) {
-    biggest = script;
-  }
-}
-
-console.log(biggest);
+console.log(
+  Math.round(average(SCRIPTS.filter((s) => !s.living).map((s) => s.year)))
+);
