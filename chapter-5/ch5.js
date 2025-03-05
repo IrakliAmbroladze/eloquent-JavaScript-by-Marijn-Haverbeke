@@ -1,3 +1,5 @@
+const SCRIPTS = require("./05_higher_order/code/scripts");
+
 require("./05_higher_order/code/scripts");
 
 const characterCount = (script) => {
@@ -6,8 +8,12 @@ const characterCount = (script) => {
   }, 0);
 };
 
-console.log(
-  SCRIPTS.reduce((a, b) => {
-    return characterCount(a) < characterCount(b) ? b : a;
-  })
-);
+let biggest = null;
+
+for (let script of SCRIPTS) {
+  if (biggest == null || characterCount(biggest) < characterCount(script)) {
+    biggest = script;
+  }
+}
+
+console.log(biggest);
