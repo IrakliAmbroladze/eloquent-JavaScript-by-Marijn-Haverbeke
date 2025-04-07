@@ -1,32 +1,14 @@
-let protoRabbit = {
-  a: "hello",
-  speak(line) {
-    console.log(`The ${this.type} rabbit says '${line}'`);
-  },
-};
-
-let blackRabbit = Object.create(protoRabbit);
-blackRabbit.type = "black";
-
-blackRabbit.speak("I am fear and darkness");
-
-// Classes
-
-function makeRabbit(type) {
-  let rabbit = Object.create(protoRabbit);
-  rabbit.type = type;
-  return rabbit;
-}
-
-class Rabbit {
-  constructor(type) {
-    this.type = type;
+class RandomSource {
+  #max;
+  constructor(max) {
+    this.#max = max;
   }
-  speak(line) {
-    console.log(`The ${this.type} rabbit says '${line}'`);
+  getNumber() {
+    return Math.floor(Math.random() * this.#max);
   }
 }
 
-let killerRabbit = new Rabbit("killer");
+let randomNumber = new RandomSource(100);
 
-console.log(killerRabbit);
+console.log(new RandomSource(100).getNumber());
+console.log(randomNumber.getNumber());
