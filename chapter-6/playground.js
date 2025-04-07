@@ -1,14 +1,20 @@
-class RandomSource {
-  #max;
-  constructor(max) {
-    this.#max = max;
+class Rabbit {
+  constructor(type) {
+    this.type = type;
   }
-  getNumber() {
-    return Math.floor(Math.random() * this.#max);
+  speak(line) {
+    console.log(`The ${this.type} rabbit says '${line}'`);
   }
 }
 
-let randomNumber = new RandomSource(100);
+Rabbit.prototype.teeth = "small";
 
-console.log(new RandomSource(100).getNumber());
-console.log(randomNumber.getNumber());
+let killerRabbit = new Rabbit("killer");
+
+console.log(killerRabbit.teeth);
+
+killerRabbit.teeth = "long, sharp, and bloody";
+console.log(killerRabbit.teeth);
+
+console.log(new Rabbit("basic").teeth);
+console.log(Rabbit.prototype.teeth);
