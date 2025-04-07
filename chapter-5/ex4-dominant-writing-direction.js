@@ -27,35 +27,20 @@ function countBy(items, groupName) {
   return counts;
 }
 
-function textScripts(text) {
-  let scripts = countBy(text, (char) => {
-    let script = characterScript(char.codePointAt(0));
-    return script ? script.name : "none";
-  }).filter(({ name }) => name != "none");
-
-  let total = scripts.reduce((n, { count }) => n + count, 0);
-  if (total == 0) return "No scripts found";
-
-  return scripts
-    .map(({ name, count }) => {
-      return `${Math.round((count * 100) / total)}% ${name}`;
-    })
-    .join(", ");
-}
-
 function dominantDirection(text) {
-  let scripts = countBy(text, (char) => {
+  let counted = countBy(text, (char) => {
     let script = characterScript(char.codePointAt(0));
-    return script ? script.name : "none";
+    return script ? script.direction : "none";
   }).filter(({ name }) => name != "none");
 
-  let dominant = scripts.reduce((a, b) => (a.count > b.count ? a : b));
+  if (counted.length == 0) return "ltr";
 
-  let dominantScript = SCRIPTS.find((script) => script.name == dominant.name);
+  let dominant = counted.reduce((a, b) => (a.count > b.count ? a : b));
 
-  return dominantScript.direction;
+  return dominant.name;
 }
 
+console.log(dominantDirection(""));
 console.log(dominantDirection("Hello!"));
 // → ltr
 console.log(dominantDirection("Hey, مساء الخير"));
