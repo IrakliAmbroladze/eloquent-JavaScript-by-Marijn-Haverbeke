@@ -1,20 +1,25 @@
-class Rabbit {
-  constructor(type) {
-    this.type = type;
-  }
-  speak(line) {
-    console.log(`The ${this.type} rabbit says '${line}'`);
-  }
-}
+// const firstPrototype = {};
+// firstPrototype.color = "white";
+// const secondPrototype = Object.create(firstPrototype);
 
-Rabbit.prototype.teeth = "small";
+// secondPrototype.style = "beautiful";
 
-let killerRabbit = new Rabbit("killer");
+// const testObject = Object.create(secondPrototype);
 
-console.log(killerRabbit.teeth);
+// testObject.value = 15;
 
-killerRabbit.teeth = "long, sharp, and bloody";
-console.log(killerRabbit.teeth);
+// console.log(firstPrototype, secondPrototype, testObject);
+// console.log(testObject.value);
+// console.log(testObject.style);
+// console.log(testObject.color);
 
-console.log(new Rabbit("basic").teeth);
-console.log(Rabbit.prototype.teeth);
+const obj = {
+  x: 1,
+  y: "hello",
+  toString() {
+    return "This is object obj";
+  },
+};
+
+console.log(obj + "");
+console.log(String());
