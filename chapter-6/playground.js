@@ -31,8 +31,8 @@ let oldSchoolRabbit = new ArchaichRabbit("old school");
 
 oldSchoolRabbit.speak("I am from an old school!");
 
-let obj = function () {
-  return 5;
+let obj = {
+  x: 5,
 };
 
 class SecretiveObject {
@@ -60,3 +60,16 @@ class RandomSourse {
 let random = new RandomSourse(75);
 
 console.log(random.getNumber());
+
+console.log(obj.toString());
+console.log([1, 2].toString());
+console.log(obj.toString.call([1, 2]));
+
+let ages = new Map();
+
+let myObj = { x: 1 };
+
+ages.set("Irakli", 34);
+ages.set(myObj, 45);
+
+console.log(ages.get(myObj));
