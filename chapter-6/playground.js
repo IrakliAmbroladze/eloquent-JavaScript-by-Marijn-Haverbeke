@@ -151,3 +151,17 @@ let list = List.fromArray([1, 2, 3]);
 for (let element of list) {
   console.log(element);
 }
+
+class LengthList extends List {
+  #length;
+  constructor(value, rest) {
+    super(value, rest);
+    this.#length = super.length;
+  }
+
+  get length() {
+    return this.#length;
+  }
+}
+
+console.log(LengthList.fromArray([1, 2, 3]).length);
