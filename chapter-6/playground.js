@@ -165,3 +165,8 @@ class LengthList extends List {
 }
 
 console.log(LengthList.fromArray([1, 2, 3]).length);
+
+console.log(new LengthList(1, null) instanceof LengthList);
+console.log(new LengthList(2, null) instanceof LengthList);
+console.log(new List(3, null) instanceof LengthList);
+console.log([1] instanceof Array);
