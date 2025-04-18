@@ -11,6 +11,11 @@ class Vec {
     this.x = x;
     this.y = y;
   }
+
+  get length() {
+    return Math.sqrt(this.x ** 2 + this.y ** 2);
+  }
+
   plus(vector) {
     let newX = this.x + vector.x;
     let newY = this.y + vector.y;
