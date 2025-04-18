@@ -16,17 +16,11 @@ class Vec {
     return Math.sqrt(this.x ** 2 + this.y ** 2);
   }
 
-  plus(vector) {
-    let newX = this.x + vector.x;
-    let newY = this.y + vector.y;
-    let newVector = { x: newX, y: newY };
-    return newVector;
+  plus(other) {
+    return new Vec(this.x + other.x, this.y + other.y);
   }
-  minus(vector) {
-    let newX = this.x - vector.x;
-    let newY = this.y - vector.y;
-    let newVector = { x: newX, y: newY };
-    return newVector;
+  minus(other) {
+    return new Vec(this.x - other.x, this.y - other.y);
   }
 }
 
