@@ -123,7 +123,7 @@ class BitSet extends AbstractWritableSet {
   }
   insert(x) {
     if (this._valid(x)) {
-      let byte = Math.floor(c / 8);
+      let byte = Math.floor(x / 8);
       let bit = x % 8;
       if (!this._has(byte, bit)) {
         this.data[byte] |= BitSet.bits[bit];
@@ -159,3 +159,12 @@ class BitSet extends AbstractWritableSet {
 
 BitSet.bits = new Uint8Array([1, 2, 4, 8, 16, 32, 64, 128]);
 BitSet.masks = new Uint8Array([~1, ~2, ~4, ~8, ~16, ~32, ~64, ~128]);
+
+let realBitSet = new BitSet(10);
+realBitSet.insert(1);
+realBitSet.insert(2);
+realBitSet.insert(3);
+
+let notSetObject = new NotSet(realBitSet);
+console.log(notSetObject.toString());
+console.log(notSetObject.has(5));
