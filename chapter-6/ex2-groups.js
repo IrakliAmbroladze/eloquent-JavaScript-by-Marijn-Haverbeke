@@ -1,22 +1,20 @@
 class Group {
-  constructor() {
-    this.members = [];
-  }
-  add(v) {
-    if (!this.members.includes(v)) {
-      this.members.push(v);
+  #members = [];
+  add(value) {
+    if (!this.has(value)) {
+      this.#members.push(value);
     }
   }
-  delete(v) {
-    this.members = this.members.filter((member) => !(v === member));
+  delete(value) {
+    this.#members = this.#members.filter((v) => v !== value);
   }
-  has(v) {
-    return this.members.includes(v);
+  has(value) {
+    return this.#members.includes(value);
   }
-  static from(arr) {
+  static from(collection) {
     let group = new Group();
-    for (let v of arr) {
-      group.add(v);
+    for (let value of collection) {
+      group.add(value);
     }
     return group;
   }
