@@ -14,3 +14,8 @@ const roads = [
   "Marketplace-Town Hall",
   "Shop-Town Hall",
 ];
+
+function buildGraph() {
+  let graph;
+  return graph;
+}
